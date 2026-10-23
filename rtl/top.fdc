@@ -1,0 +1,85 @@
+# 约束文件名称：top.fdc
+# 功能说明：紫光同创 Logos-2 PG2L200H 物理管脚映射与时钟时序约束文件
+# 1. 主系统时钟定义 (27MHz 晶振输入，周期 37.037 ns)
+# 2. 板载物理引脚绑定与 3.3V LVCMOS 电平标准配置 (时钟、复位、UART、KEY、LED)
+
+# 主系统时钟周期约束 (27MHz 对应周期 37.037 ns)
+create_clock -name clk -period 37.037 [get_ports {clk}]
+
+# 板载 27MHz 晶振引脚绑定 (D18)
+define_attribute {p:clk} {PAP_IO_DIRECTION} {INPUT}
+define_attribute {p:clk} {PAP_IO_LOC} {D18}
+define_attribute {p:clk} {PAP_IO_VCCIO} {3.3}
+define_attribute {p:clk} {PAP_IO_STANDARD} {LVCMOS33}
+define_attribute {p:clk} {PAP_IO_NONE} {TRUE}
+
+# 硬件复位按键引脚绑定 (C22，低电平有效)
+define_attribute {p:rst_n} {PAP_IO_DIRECTION} {INPUT}
+define_attribute {p:rst_n} {PAP_IO_LOC} {C22}
+define_attribute {p:rst_n} {PAP_IO_VCCIO} {3.3}
+define_attribute {p:rst_n} {PAP_IO_STANDARD} {LVCMOS33}
+define_attribute {p:rst_n} {PAP_IO_NONE} {TRUE}
+
+# UART 接收引脚绑定 (AC26)
+define_attribute {p:uart_rx} {PAP_IO_DIRECTION} {INPUT}
+define_attribute {p:uart_rx} {PAP_IO_LOC} {AC26}
+define_attribute {p:uart_rx} {PAP_IO_VCCIO} {3.3}
+define_attribute {p:uart_rx} {PAP_IO_STANDARD} {LVCMOS33}
+define_attribute {p:uart_rx} {PAP_IO_NONE} {TRUE}
+
+# UART 发送引脚绑定 (AB26)
+define_attribute {p:uart_tx} {PAP_IO_DIRECTION} {OUTPUT}
+define_attribute {p:uart_tx} {PAP_IO_LOC} {AB26}
+define_attribute {p:uart_tx} {PAP_IO_VCCIO} {3.3}
+define_attribute {p:uart_tx} {PAP_IO_STANDARD} {LVCMOS33}
+define_attribute {p:uart_tx} {PAP_IO_NONE} {TRUE}
+
+# 用户按键引脚绑定 (KEY[3:0]，低电平有效)
+define_attribute {p:KEY[0]} {PAP_IO_DIRECTION} {INPUT}
+define_attribute {p:KEY[0]} {PAP_IO_LOC} {U21}
+define_attribute {p:KEY[0]} {PAP_IO_VCCIO} {3.3}
+define_attribute {p:KEY[0]} {PAP_IO_STANDARD} {LVCMOS33}
+define_attribute {p:KEY[0]} {PAP_IO_NONE} {TRUE}
+
+define_attribute {p:KEY[1]} {PAP_IO_DIRECTION} {INPUT}
+define_attribute {p:KEY[1]} {PAP_IO_LOC} {W24}
+define_attribute {p:KEY[1]} {PAP_IO_VCCIO} {3.3}
+define_attribute {p:KEY[1]} {PAP_IO_STANDARD} {LVCMOS33}
+define_attribute {p:KEY[1]} {PAP_IO_NONE} {TRUE}
+
+define_attribute {p:KEY[2]} {PAP_IO_DIRECTION} {INPUT}
+define_attribute {p:KEY[2]} {PAP_IO_LOC} {V24}
+define_attribute {p:KEY[2]} {PAP_IO_VCCIO} {3.3}
+define_attribute {p:KEY[2]} {PAP_IO_STANDARD} {LVCMOS33}
+define_attribute {p:KEY[2]} {PAP_IO_NONE} {TRUE}
+
+define_attribute {p:KEY[3]} {PAP_IO_DIRECTION} {INPUT}
+define_attribute {p:KEY[3]} {PAP_IO_LOC} {AA23}
+define_attribute {p:KEY[3]} {PAP_IO_VCCIO} {3.3}
+define_attribute {p:KEY[3]} {PAP_IO_STANDARD} {LVCMOS33}
+define_attribute {p:KEY[3]} {PAP_IO_NONE} {TRUE}
+
+# 用户 LED 引脚绑定 (LED[3:0]，低电平驱动点亮)
+define_attribute {p:LED[0]} {PAP_IO_DIRECTION} {OUTPUT}
+define_attribute {p:LED[0]} {PAP_IO_LOC} {U16}
+define_attribute {p:LED[0]} {PAP_IO_VCCIO} {3.3}
+define_attribute {p:LED[0]} {PAP_IO_STANDARD} {LVCMOS33}
+define_attribute {p:LED[0]} {PAP_IO_NONE} {TRUE}
+
+define_attribute {p:LED[1]} {PAP_IO_DIRECTION} {OUTPUT}
+define_attribute {p:LED[1]} {PAP_IO_LOC} {U15}
+define_attribute {p:LED[1]} {PAP_IO_VCCIO} {3.3}
+define_attribute {p:LED[1]} {PAP_IO_STANDARD} {LVCMOS33}
+define_attribute {p:LED[1]} {PAP_IO_NONE} {TRUE}
+
+define_attribute {p:LED[2]} {PAP_IO_DIRECTION} {OUTPUT}
+define_attribute {p:LED[2]} {PAP_IO_LOC} {V17}
+define_attribute {p:LED[2]} {PAP_IO_VCCIO} {3.3}
+define_attribute {p:LED[2]} {PAP_IO_STANDARD} {LVCMOS33}
+define_attribute {p:LED[2]} {PAP_IO_NONE} {TRUE}
+
+define_attribute {p:LED[3]} {PAP_IO_DIRECTION} {OUTPUT}
+define_attribute {p:LED[3]} {PAP_IO_LOC} {V16}
+define_attribute {p:LED[3]} {PAP_IO_VCCIO} {3.3}
+define_attribute {p:LED[3]} {PAP_IO_STANDARD} {LVCMOS33}
+define_attribute {p:LED[3]} {PAP_IO_NONE} {TRUE}
